@@ -1,0 +1,30 @@
+___________________________________
+#Instrucciones para elegir entre pruebas estadísiticas para dos muestras: 
+#T de Student, Wilcoxon, U de Mann Whitney.
+
+1. Las varianzas son homogéneas (P mayor a 0.05) ... 2
+1'. Las varianzas no son homogéneas (P menor a 0.05) ... no se pueden correr estas pruebas
+Checar homocedasticidad con la prueba de Fisher si son 2 muestras: var.test()
+Si son 3 o más muestras utilizar la prueba de Bartlett (paramétrica, sensible a datos atípicos): bartlett.test()
+O la de Fligner–Killeen (no paramétrica, poco sensible): fligner.test() 
+
+2. Las muestras son normales... 3
+2'. Las muestras no son normales... 4
+Checar normalidad con shapiro.test(), o visualmente qqnorm();qqplot() (Crawley 2013, 2015; Ian Fellows: http://blog.fellstat.com/?p=61)
+
+3. Las muestras son independientes ... T de Student independiente
+t.test(paired=F)
+3'. Las muestras son dependientes ... T de Student pareada
+t.test(paired=T)
+
+4. Las muestras son independientes ... U de Mann Whitney (Prueba de suma de rangos de Wilcoxon)
+wilcox.test(paired=F)
+4'. Las muestras no son dependientes ... Prueba de rangos con signo de Wilcoxon
+wilcox.text(paired=T)
+______________________________________
+
+Referencias
+
+Crawley, M. J. (2013). The R book. 2nd Ed. John Wiley & Sons.
+
+Crawley, M. (2015). Statistics: an introduction using R. 2 Ed. West Sussex, UK: John Wiley & Sons Ltd. 357 pp.
